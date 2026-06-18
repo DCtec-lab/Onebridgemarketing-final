@@ -2,6 +2,8 @@ import { FC } from "react";
 import { Shield, CircleCheck as CheckCircle, TrendingUp, Users, Target, Zap, Star, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
+const TALLY_HREF = "#tally-open=684DGe&tally-emoji-text=👋&tally-emoji-animation=wave";
+
 const pillars = [
   { label: "Strategy First", sub: "Every decision starts with your goals.", color: "bg-purple-50 border-purple-200 text-purple-700" },
   { label: "Full Execution", sub: "We don't just advise. We deliver.", color: "bg-amber-50 border-amber-200 text-amber-700" },
@@ -214,12 +216,12 @@ export const AboutPage: FC = () => {
                   No juggling freelancers, agencies, or tools. One team, one strategy, one point of contact for everything digital — from content to campaigns to brand identity.
                 </p>
               </div>
-              <Link
-                to="/"
+              <a
+                href={TALLY_HREF}
                 className="mt-8 inline-flex items-center gap-2 bg-orange-brand hover:bg-orange-hover text-white font-sans font-bold text-sm tracking-wider uppercase px-5 py-3 rounded-lg transition-all duration-300 self-start"
               >
                 Start Your Audit <ArrowRight size={16} />
-              </Link>
+              </a>
             </div>
 
             {/* Mini cards grid */}

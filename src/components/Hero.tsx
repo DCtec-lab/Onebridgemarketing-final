@@ -1,13 +1,7 @@
 import { FC, useEffect, useRef, useState, MouseEvent } from "react";
 import { ArrowRight, Trophy, Flame } from "lucide-react";
 
-export default function App() {
-  return (
-    <div className="bg-[#FAF9FC] text-[#0D0B14] min-h-screen font-sans overflow-hidden selection:bg-[#EA4812]/10 selection:text-[#EA4812] transition-colors duration-300">
-      <Hero />
-    </div>
-  );
-}
+const TALLY_HREF = "#tally-open=684DGe&tally-emoji-text=👋&tally-emoji-animation=wave";
 
 export const Hero: FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -180,8 +174,8 @@ export const Hero: FC = () => {
     }
   };
 
-  const handleCtaClick = (href: string) => {
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const handleServicesClick = () => {
+    document.querySelector("#services")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
@@ -193,7 +187,7 @@ export const Hero: FC = () => {
         inner container to maintain vertical centering on large screens while 
         respecting the top padding on mobile.
       */
-      className="relative w-full bg-[#FAF8FC] pt-24 pb-0 sm:pt-28 md:pt-28 lg:pt-28 lg:pb-0 flex justify-center overflow-hidden transition-colors duration-300 z-10"
+      className="relative w-full bg-[#FAF8FC] pt-20 pb-0 sm:pt-24 md:pt-24 lg:pt-24 lg:pb-0 flex justify-center overflow-hidden transition-colors duration-300 z-10"
     >
       {/* Immersive Warm Atmospheric Light Theme Grid Overlays */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
@@ -211,8 +205,8 @@ export const Hero: FC = () => {
           {/* Content Column */}
           <div className="lg:col-span-6 flex flex-col items-start text-left space-y-6 sm:space-y-8 relative z-30">
             
-            {/* Invisible spacer to clear the fixed navbar */}
-            <div className="w-full h-4 sm:h-6 flex-shrink-0 pointer-events-none select-none" aria-hidden="true" />
+            {/* Spacer: taller on mobile so title has clear air below the bridge */}
+            <div className="w-full h-2 sm:h-4 flex-shrink-0 pointer-events-none select-none" aria-hidden="true" />
 
             <h1
               id="hero-heading"
@@ -250,8 +244,8 @@ export const Hero: FC = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto pt-2">
-              <button
-                onClick={() => handleCtaClick("#audit")}
+              <a
+                href={TALLY_HREF}
                 className="hero-cta-button group relative bg-[#EA4812] hover:bg-[#F25C2B] text-white font-sans font-extrabold text-xs sm:text-sm tracking-wider uppercase px-6 sm:px-8 py-4 sm:py-5 rounded-xl shadow-xl shadow-[#EA4812]/15 hover:shadow-[#EA4812]/30 transition-all duration-300 flex items-center justify-center gap-3 hover:-translate-y-1 cursor-pointer overflow-hidden border border-white/10"
               >
                 <span className="relative z-10 flex items-center gap-3">
@@ -259,10 +253,10 @@ export const Hero: FC = () => {
                   <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform" />
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/35 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-              </button>
+              </a>
 
               <button
-                onClick={() => handleCtaClick("#services")}
+                onClick={handleServicesClick}
                 className="hero-cta-button border-2 border-black/10 hover:border-[#EA4812] text-gray-800 hover:bg-black/[0.02] font-sans font-bold text-xs sm:text-sm tracking-wider uppercase px-6 sm:px-8 py-4 sm:py-5 rounded-xl transition-all duration-300 flex items-center justify-center cursor-pointer hover:-translate-y-1"
               >
                 View Services
@@ -271,7 +265,7 @@ export const Hero: FC = () => {
           </div>
 
           {/* Premium 3D Isometric Bridge Display Column */}
-          <div className="lg:col-span-6 flex justify-center items-center relative pt-4 lg:pt-0 w-full z-20">
+          <div className="lg:col-span-6 flex justify-center items-center relative pt-6 pb-0 lg:pt-0 w-full z-20">
 
             {/* Background Parallax Light Mesh Elements */}
             <div

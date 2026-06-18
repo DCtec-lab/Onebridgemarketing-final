@@ -195,9 +195,9 @@ export const Process: FC = () => {
         <div
           className="
             max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full
-            flex flex-col justify-center
-            py-4 sm:py-6 lg:py-8
-            gap-3 sm:gap-4 lg:gap-4
+            flex flex-col justify-start lg:justify-center
+            py-3 sm:py-6 lg:py-8
+            gap-4 sm:gap-4 lg:gap-4
           "
         >
           {/* ── Header ────────────────────────────────────────────────────────── */}

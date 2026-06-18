@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { ArrowRight, TrendingUp } from "lucide-react";
-import { Link } from "react-router-dom";
+
+const TALLY_HREF = "#tally-open=684DGe&tally-emoji-text=👋&tally-emoji-animation=wave";
 
 interface CaseStudy {
   id: string;
@@ -295,12 +296,12 @@ export const CaseStudiesPage: FC = () => {
           <p className="font-sans text-gray-400 text-base sm:text-lg leading-relaxed max-w-lg mx-auto mb-8">
             Start with a free audit — we'll review your presence and show you what's possible.
           </p>
-          <Link
-            to="/"
+          <a
+            href={TALLY_HREF}
             className="inline-flex items-center gap-2 bg-orange-brand hover:bg-orange-hover text-white font-sans font-bold text-sm tracking-wider uppercase px-6 py-3.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
           >
             Start With a Free Audit <ArrowRight size={16} />
-          </Link>
+          </a>
         </div>
       </section>
     </div>

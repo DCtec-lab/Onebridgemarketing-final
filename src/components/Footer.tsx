@@ -1,27 +1,13 @@
-import { FC, useState, FormEvent, MouseEvent } from "react";
+import { FC, MouseEvent } from "react";
 import { Logo } from "./Logo";
-import { Instagram, Twitter, Youtube, Send, CircleCheck as CheckCircle2 } from "lucide-react";
+import { Instagram, Twitter, Youtube, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
+const TALLY_HREF = "#tally-open=684DGe&tally-emoji-text=👋&tally-emoji-animation=wave";
+
 export const Footer: FC = () => {
-  const [newsEmail, setNewsEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleNewsSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    if (!newsEmail) return;
-
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubscribed(true);
-      setNewsEmail("");
-    }, 1000);
-  };
-
   const handleLinkClick = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith("#")) {
+    if (href.startsWith("#") && !href.includes("tally")) {
       e.preventDefault();
       const el = document.querySelector(href);
       if (el) {
@@ -37,7 +23,9 @@ export const Footer: FC = () => {
           
           {/* Column 1: Brand & Description (span 4) */}
           <div className="lg:col-span-4 space-y-6">
-            <Logo size={40} lightText={false} />
+            <Link to="/">
+              <Logo size={40} lightText={false} />
+            </Link>
             <p className="font-sans text-gray-500 text-sm sm:text-[15px] leading-relaxed max-w-sm">
               The creative digital growth partner dedicated to seeing your business thrive in the modern landscape.
             </p>
@@ -45,7 +33,7 @@ export const Footer: FC = () => {
             {/* Social Icons row */}
             <div id="footer-social-row" className="flex items-center gap-4.5 pt-2">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/onebridgemarketing"
                 target="_blank"
                 rel="noreferrer"
                 className="w-9 h-9 rounded-full bg-gray-50 border border-gray-200 text-gray-600 hover:bg-orange-brand hover:border-orange-brand hover:text-white flex items-center justify-center transition-all duration-300"
@@ -54,20 +42,20 @@ export const Footer: FC = () => {
                 <Instagram size={18} />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://www.linkedin.com/company/onebridge-marketing/"
                 target="_blank"
                 rel="noreferrer"
                 className="w-9 h-9 rounded-full bg-gray-50 border border-gray-200 text-gray-600 hover:bg-orange-brand hover:border-orange-brand hover:text-white flex items-center justify-center transition-all duration-300"
-                aria-label="Twitter X"
+                aria-label="LinkedIn"
               >
                 <Twitter size={18} />
               </a>
               <a
-                href="https://youtube.com"
+                href="https://www.facebook.com/people/Onebridge-Marketing/61590292896746/"
                 target="_blank"
                 rel="noreferrer"
                 className="w-9 h-9 rounded-full bg-gray-50 border border-gray-200 text-gray-600 hover:bg-orange-brand hover:border-orange-brand hover:text-white flex items-center justify-center transition-all duration-300"
-                aria-label="YouTube"
+                aria-label="Facebook"
               >
                 <Youtube size={18} />
               </a>
@@ -99,7 +87,7 @@ export const Footer: FC = () => {
             </ul>
           </div>
 
-          {/* Column 3: Company List (span 2.5) */}
+          {/* Column 3: Company (span 2.5) */}
           <div className="lg:col-span-2.5 space-y-5">
             <h4 className="font-mono text-xs font-bold tracking-widest text-[#0A192F] uppercase">
               COMPANY
@@ -109,7 +97,7 @@ export const Footer: FC = () => {
                 { name: "About Us", href: "/about", isPage: true },
                 { name: "Case Studies", href: "/case-studies", isPage: true },
                 { name: "Our Process", href: "/process", isPage: true },
-                { name: "Contact", href: "#audit", isPage: false },
+                { name: "Contact", href: TALLY_HREF, isPage: false },
               ].map((link, idx) => (
                 <li key={idx}>
                   {link.isPage ? (
@@ -120,77 +108,44 @@ export const Footer: FC = () => {
                       {link.name}
                     </Link>
                   ) : (
-                  <a
-                    href={link.href}
-                    onClick={(e) => handleLinkClick(e, link.href)}
-                    className="font-sans text-sm text-gray-500 hover:text-orange-brand transition-colors"
-                  >
-                    {link.name}
-                  </a>
+                    <a
+                      href={link.href}
+                      className="font-sans text-sm text-gray-500 hover:text-orange-brand transition-colors"
+                    >
+                      {link.name}
+                    </a>
                   )}
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 4: Newsletter Box (span 3) */}
+          {/* Column 4: CTA (span 3) */}
           <div className="lg:col-span-3 space-y-5">
             <h4 className="font-mono text-xs font-bold tracking-widest text-[#0A192F] uppercase">
-              NEWSLETTER
+              GET STARTED
             </h4>
-            <p className="font-sans text-gray-500 text-[13px] leading-relaxed">
-              Get growth tips delivered directly to your inbox.
+            <p className="font-sans text-sm text-gray-500 leading-relaxed">
+              Ready to grow your brand? Get a free digital audit and see exactly where your biggest opportunities are.
             </p>
-
-            {!subscribed ? (
-              <form onSubmit={handleNewsSubmit} className="flex flex-col gap-2">
-                <input
-                  type="email"
-                  required
-                  placeholder="Email Address"
-                  value={newsEmail}
-                  onChange={(e) => setNewsEmail(e.target.value)}
-                  className="w-full bg-gray-50 border border-gray-300 text-gray-800 text-sm px-4 py-3 rounded focus:border-orange-brand focus:outline-none focus:bg-white transition-colors"
-                />
-                
-                {/* Custom blue-violet or orange subscriber trigger */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-[#5D5FEF] hover:bg-[#4B4DCC] text-white font-sans font-bold text-xs tracking-widest uppercase py-3 rounded shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  {isSubmitting ? (
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  ) : (
-                    <>
-                      Subscribe
-                      <Send size={12} />
-                    </>
-                  )}
-                </button>
-              </form>
-            ) : (
-              /* Subscribed instant feedback */
-              <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg text-xs flex items-center gap-2.5">
-                <CheckCircle2 size={16} className="text-emerald-500 flex-shrink-0" />
-                <span>Success! You've been subscribed to our tips feed.</span>
-              </div>
-            )}
-          </div>
-
-        </div>
-
-        {/* Subfooter lower credits */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-gray-400">
-          <span>
-            © {new Date().getFullYear()} ONE BRIDGE MARKETING. ALL RIGHTS RESERVED.
-          </span>
-          <div className="flex gap-6">
-            <a href="#audit" className="hover:text-orange-brand transition-colors">Privacy Policy</a>
-            <a href="#audit" className="hover:text-orange-brand transition-colors">Terms of Service</a>
+            <a
+              href={TALLY_HREF}
+              className="inline-flex items-center gap-2 bg-orange-brand hover:bg-orange-hover text-white font-sans font-bold text-sm tracking-wider uppercase px-5 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+            >
+              Free Audit <ArrowRight size={14} />
+            </a>
           </div>
         </div>
 
+        {/* Bottom bar */}
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8">
+          <p className="font-sans text-xs text-gray-400 text-center sm:text-left">
+            © 2026 OneBridge Marketing. All rights reserved.
+          </p>
+          <p className="font-mono text-xs text-gray-400 tracking-widest uppercase">
+            Done-For-You Digital Growth
+          </p>
+        </div>
       </div>
     </footer>
   );

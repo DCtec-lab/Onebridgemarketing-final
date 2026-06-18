@@ -91,7 +91,7 @@ export const Services: FC = () => {
         const mainTrigger = ScrollTrigger.create({
           trigger: sectionRef.current,
           start: "top top",
-          end: `+=${totalSlides * 65}vh`, // Expanded just enough to align thresholds perfectly
+          end: `+=${totalSlides * 110}vh`,
           pin: containerRef.current,
           scrub: 0.5,
           onUpdate: (self) => {

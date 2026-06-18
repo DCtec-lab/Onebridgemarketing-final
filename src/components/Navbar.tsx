@@ -3,6 +3,8 @@ import { Logo } from "./Logo";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
+const TALLY_HREF = "#tally-open=684DGe&tally-emoji-text=👋&tally-emoji-animation=wave";
+
 export const Navbar: FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -61,9 +63,8 @@ export const Navbar: FC = () => {
     }
   };
 
-  const handleAuditClick = (e: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
-    e.preventDefault();
-    scrollToHash("#audit");
+  const handleAuditClick = () => {
+    window.location.href = TALLY_HREF;
   };
 
   const isVisible = mouseNearTop || !hidden || mobileMenuOpen;

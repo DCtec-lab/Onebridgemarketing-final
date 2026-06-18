@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Search, ChartBar as BarChart2, Compass, Rocket, RefreshCcw, Globe, Heart, Users, Activity, Phone, LayoutGrid, Eye, DollarSign, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+
+const TALLY_HREF = "#tally-open=684DGe&tally-emoji-text=👋&tally-emoji-animation=wave";
 
 const steps = [
   { num: "01", icon: Search, label: "Discovery", desc: "We deep-dive into your business, goals, target audience, competition, and current online presence." },
@@ -208,12 +209,12 @@ export const ProcessPage: FC = () => {
           </div>
 
           <div className="mt-10 text-center">
-            <Link
-              to="/"
+            <a
+              href={TALLY_HREF}
               className="inline-flex items-center gap-2 bg-orange-brand hover:bg-orange-hover text-white font-sans font-bold text-sm tracking-wider uppercase px-6 py-3.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
             >
               Start With a Free Audit <ArrowRight size={16} />
-            </Link>
+            </a>
           </div>
         </div>
       </section>
