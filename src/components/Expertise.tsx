@@ -9,9 +9,9 @@ export const Expertise: FC = () => {
           
           {/* Left row: copy text & checklist */}
           <div className="lg:col-span-6 space-y-6">
-            <h2 className="font-display font-black text-3xl sm:text-4.5xl text-navy-dark leading-tight tracking-tight">
+            <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-navy-dark leading-tight tracking-tight">
               Expertise Powered by
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-brand to-red-500 italic font-black">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-brand to-red-500 italic font-extrabold">
                 Humans
               </span>
             </h2>

@@ -176,7 +176,7 @@ export const Process: FC = () => {
       id="process"
       ref={containerRef}
       className="relative w-full bg-[#FAF9FC] border-b border-purple-100/30"
-      style={{ height: "500vh" }}
+      style={{ height: "300vh" }}
     >
       {/* ── Pinned panel ──────────────────────────────────────────────────────── */}
       {/* On desktop  → GSAP ScrollTrigger pins this element.
@@ -206,9 +206,9 @@ export const Process: FC = () => {
               <Activity size={12} className="text-[#EA4812]" />
               THE CONVERSION ARCHITECTURE
             </div>
-            <h2 className="font-display font-black text-lg sm:text-2xl lg:text-3xl text-navy-dark leading-none tracking-tight mb-1 uppercase">
+            <h2 className="font-display font-extrabold text-lg sm:text-2xl lg:text-3xl text-navy-dark leading-none tracking-tight mb-1">
               Building Your Direct{" "}
-              <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#EA4812] via-purple-600 to-indigo-600 italic font-black lowercase">
+              <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#EA4812] via-purple-600 to-indigo-600 italic font-extrabold lowercase">
                 bridge to market dominance.
               </span>
             </h2>
@@ -331,7 +331,7 @@ export const Process: FC = () => {
                   <span className="block font-mono text-[9px] font-black text-[#EA4812] tracking-widest uppercase mb-1">
                     {step.badge}
                   </span>
-                  <h3 className="font-display font-black text-base sm:text-lg uppercase tracking-wide text-[#0D0B14] leading-tight">
+                  <h3 className="font-display font-bold text-base sm:text-lg tracking-tight text-[#0D0B14] leading-tight">
                     {step.title}
                   </h3>
                   <span className="block font-sans text-[10px] font-bold text-purple-500 tracking-wider uppercase mt-1">
@@ -363,36 +363,43 @@ export const Process: FC = () => {
               </div>
             </div>
 
-            {/* Analytics pane — compact one-liner strip */}
-            <div className="flex-1 min-w-0 bg-zinc-950 rounded-xl border border-zinc-800 p-3 sm:p-5 font-mono flex flex-col justify-between shadow-2xl transition-all duration-300 overflow-hidden">
-              
-              {/* One-liner status bar */}
-              <div className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-2 min-w-0">
-                  <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
-                  <span className="text-[9px] text-gray-300 font-bold tracking-wider flex-shrink-0">
-                    CONVERSION ANALYTICS ACTIVE
-                  </span>
-                  <span className="text-[9px] text-zinc-600 mx-1 flex-shrink-0">·</span>
-                  <span className="text-[9px] text-[#A78BFA] truncate">{step.stats.readout}</span>
-                </div>
-                <ShieldCheck size={13} className="text-green-500 flex-shrink-0" />
+            {/* Analytics pane */}
+            <div className="sm:flex-1 min-w-0 bg-zinc-950 rounded-xl border border-zinc-800 font-mono shadow-2xl transition-all duration-300 overflow-hidden
+              /* mobile: slim single row */
+              flex items-center gap-3 px-3 py-2
+              /* desktop: column layout */
+              sm:flex-col sm:justify-between sm:p-5 sm:items-stretch sm:gap-0
+            ">
+              {/* Status dot + label (always visible) */}
+              <div className="flex items-center gap-2 flex-shrink-0 sm:mb-0">
+                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
+                <span className="text-[9px] text-gray-300 font-bold tracking-wider whitespace-nowrap hidden xs:inline sm:inline">LIVE</span>
               </div>
 
-              {/* Checkpoint ghost text — hidden on mobile to save vertical space */}
-              <div className="hidden sm:flex flex-1 items-center justify-center py-3 px-2">
-                <p className="text-[10px] text-zinc-300 italic text-center leading-relaxed transition-all duration-300">
-                  {step.stats.checkpoint}
-                </p>
-              </div>
+              {/* Readout — truncated on mobile, full on desktop */}
+              <span className="text-[9px] text-[#A78BFA] truncate flex-1 sm:hidden">{step.stats.readout} · {step.stats.metric}</span>
 
-              {/* Anticipated outcome */}
-              <div className="bg-zinc-900/60 p-2 sm:p-3 rounded-lg border border-zinc-800/40 mt-3 sm:mt-0">
-                <div className="text-[9px] text-zinc-500 uppercase tracking-wider mb-1">
-                  ANTICIPATED OUTCOME
+              {/* Outcome badge (mobile only — inline) */}
+              <span className="text-[9px] text-amber-400 font-black uppercase whitespace-nowrap sm:hidden flex-shrink-0">{step.accentColor === "#EA4812" ? "↑" : "→"} {step.stats.metric.split(" ").slice(-1)}</span>
+
+              {/* Desktop: full three-block layout */}
+              <div className="hidden sm:flex sm:flex-col sm:justify-between sm:flex-1 sm:gap-0">
+                <div className="flex items-center justify-between gap-3 mb-0">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <span className="text-[9px] text-gray-300 font-bold tracking-wider flex-shrink-0">CONVERSION ANALYTICS ACTIVE</span>
+                    <span className="text-[9px] text-zinc-600 mx-1 flex-shrink-0">·</span>
+                    <span className="text-[9px] text-[#A78BFA] truncate">{step.stats.readout}</span>
+                  </div>
+                  <ShieldCheck size={13} className="text-green-500 flex-shrink-0" />
                 </div>
-                <div className="text-sm text-amber-400 font-black uppercase transition-all duration-300">
-                  {step.stats.metric}
+                <div className="flex flex-1 items-center justify-center py-3 px-2">
+                  <p className="text-[10px] text-zinc-300 italic text-center leading-relaxed transition-all duration-300">
+                    {step.stats.checkpoint}
+                  </p>
+                </div>
+                <div className="bg-zinc-900/60 p-3 rounded-lg border border-zinc-800/40">
+                  <div className="text-[9px] text-zinc-500 uppercase tracking-wider mb-1">ANTICIPATED OUTCOME</div>
+                  <div className="text-sm text-amber-400 font-black uppercase transition-all duration-300">{step.stats.metric}</div>
                 </div>
               </div>
             </div>

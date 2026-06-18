@@ -228,9 +228,9 @@ export const Services: FC = () => {
 
             <div className="lg:col-span-5 space-y-6 sm:space-y-8">
               <div className="space-y-4 sm:space-y-6">
-                <h2 className="font-display font-black text-[28px] sm:text-[40px] lg:text-[44px] text-[#0D0B14] leading-[1.1] tracking-tight">
+                <h2 className="font-display font-extrabold text-[28px] sm:text-[38px] lg:text-[42px] text-[#0D0B14] leading-[1.1] tracking-tight">
                   Your Full Creative Growth Engine,
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-indigo-600 to-[#EA4812] italic mt-1 font-black">
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-indigo-600 to-[#EA4812] italic mt-1 font-extrabold">
                     Under One Bridge.
                   </span>
                 </h2>
@@ -291,7 +291,7 @@ export const Services: FC = () => {
                         </span>
                       </div>
 
-                      <h3 className="animate-text-item font-display font-black text-xl text-[#0D0B14] uppercase tracking-wide mb-3">
+                      <h3 className="animate-text-item font-display font-bold text-xl text-[#0D0B14] tracking-tight mb-3">
                         {activeService.title}
                       </h3>
                       <p className="animate-text-item font-sans text-gray-500 text-sm leading-relaxed mb-6 max-w-xl">
@@ -341,7 +341,7 @@ export const Services: FC = () => {
                         </span>
                       </div>
 
-                      <h3 className="font-display font-black text-lg text-[#0D0B14] uppercase tracking-wide mb-2">
+                      <h3 className="font-display font-bold text-lg text-[#0D0B14] tracking-tight mb-2">
                         {service.title}
                       </h3>
                       <p className="font-sans text-gray-500 text-sm leading-relaxed mb-5">

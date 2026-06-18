@@ -193,7 +193,7 @@ export const Hero: FC = () => {
         inner container to maintain vertical centering on large screens while 
         respecting the top padding on mobile.
       */
-      className="relative w-full bg-[#FAF8FC] pt-24 pb-16 sm:pt-28 md:pt-32 lg:pt-36 lg:pb-32 flex justify-center overflow-hidden transition-colors duration-300 z-10"
+      className="relative w-full bg-[#FAF8FC] pt-24 pb-0 sm:pt-28 md:pt-28 lg:pt-28 lg:pb-0 flex justify-center overflow-hidden transition-colors duration-300 z-10"
     >
       {/* Immersive Warm Atmospheric Light Theme Grid Overlays */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
@@ -211,22 +211,19 @@ export const Hero: FC = () => {
           {/* Content Column */}
           <div className="lg:col-span-6 flex flex-col items-start text-left space-y-6 sm:space-y-8 relative z-30">
             
-            {/* Invisible spacer viewbox to guarantee clearance from the top navigation bar */}
-            <div 
-              className="w-full h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0 pointer-events-none select-none" 
-              aria-hidden="true" 
-            />
+            {/* Invisible spacer to clear the fixed navbar */}
+            <div className="w-full h-4 sm:h-6 flex-shrink-0 pointer-events-none select-none" aria-hidden="true" />
 
             <h1
               id="hero-heading"
-              style={{ fontSize: "clamp(2.75rem, 1.25rem + 6vw, 3.5rem)", lineHeight: 0.95 }}
-              className="font-display font-black text-[#0D0B14] tracking-tight uppercase w-full break-words"
+              style={{ fontSize: "clamp(2.5rem, 1rem + 5.5vw, 3.25rem)", lineHeight: 1.0 }}
+              className="font-display font-extrabold text-[#0D0B14] tracking-tight w-full break-words"
             >
               Your Business
               <br />
               <span
                 style={{ lineHeight: 1.15 }}
-                className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-[#EA4812] italic pr-2 font-black lowercase"
+                className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-[#EA4812] italic pr-2 font-extrabold lowercase"
               >
                 deserves
               </span>

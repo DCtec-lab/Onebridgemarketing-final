@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { CaseStudyData } from "../types";
-import { Star, Sparkles, CheckCircle, X, ArrowRight, ShieldCheck } from "lucide-react";
+import { Star, Sparkles, CircleCheck as CheckCircle, X, ArrowRight, ShieldCheck } from "lucide-react";
 
 export const CaseStudies: FC = () => {
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -158,7 +158,7 @@ export const CaseStudies: FC = () => {
             <Star size={13} fill="#A78BFA" className="animate-pulse" />
             PROACTIVE BRAND AUDITS
           </div>
-          <h2 className="font-display font-black text-3.5xl sm:text-5xl text-white leading-tight tracking-tight mb-5">
+          <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-white leading-tight tracking-tight mb-5">
             Diagnosed Growth Blueprints.
           </h2>
           <p className="font-sans text-gray-400 text-base sm:text-lg leading-relaxed">

@@ -1,5 +1,5 @@
 import { FC, useState, FormEvent } from "react";
-import { Sparkles, ArrowRight, CheckCircle2, Lock, Navigation } from "lucide-react";
+import { Sparkles, ArrowRight, CircleCheck as CheckCircle2, Lock, Navigation } from "lucide-react";
 
 export const CtaSection: FC = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -42,8 +42,8 @@ export const CtaSection: FC = () => {
                 GET STARTED
               </div>
               
-              <h2 className="font-display font-black text-3.5xl sm:text-5xl text-white leading-[1.1] tracking-tight">
-                Ready to <span className="text-orange-brand italic pr-1 font-black">Be Seen?</span>
+              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-white leading-[1.1] tracking-tight">
+                Ready to <span className="text-orange-brand italic pr-1 font-extrabold">Be Seen?</span>
               </h2>
               
               <p className="font-sans text-gray-400 text-base sm:text-lg leading-relaxed">
