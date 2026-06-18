@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Montserrat", sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
   --color-navy-dark: #0D0B14; /* Deep classy violet-black */
@@ -120,4 +120,30 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #EA4812;
+}
+
+/* Mobile analytics pane - compact one-liner layout */
+@media (max-width: 1023px) {
+  .analytics-pane-mobile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .analytics-pane-mobile .status-row {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .analytics-pane-mobile .outcome-box {
+    display: flex;
+    align-items: center;
+    padding: 0.375rem 0.625rem;
+    flex-shrink: 0;
+  }
 }
