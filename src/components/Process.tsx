@@ -170,13 +170,13 @@ export const Process: FC = () => {
   const step = steps[activeStepIdx];
 
   return (
-    // Outer track: reduced height for more intuitive scroll interaction.
-    // 100vh for the pinned panel + 2 × 100vh for phases = 300vh total.
+    // Outer track: tall enough to create scroll distance for all 4 phases.
+    // 100vh for the pinned panel + 4 × 100vh for phases = 500vh total.
     <div
       id="process"
       ref={containerRef}
       className="relative w-full bg-[#FAF9FC] border-b border-purple-100/30"
-      style={{ height: "300vh" }}
+      style={{ height: "500vh" }}
     >
       {/* ── Pinned panel ──────────────────────────────────────────────────────── */}
       {/* On desktop  → GSAP ScrollTrigger pins this element.
@@ -314,7 +314,7 @@ export const Process: FC = () => {
           </div>
 
           {/* ── Phase card + analytics row ─────────────────────────────────────── */}
-          <div className="flex flex-col lg:flex-row gap-3 flex-1 min-h-0">
+          <div className="flex flex-col sm:flex-row gap-3 flex-1 min-h-0">
 
             {/* Current phase card — gets all remaining vertical space */}
             <div className="flex-1 min-w-0 bg-white border border-purple-600/40 ring-2 ring-purple-600/10 rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-lg transition-all duration-300 overflow-hidden">
@@ -363,31 +363,36 @@ export const Process: FC = () => {
               </div>
             </div>
 
-            {/* Analytics pane — compact one-liner strip on mobile, full on desktop */}
-            <div className="flex-1 min-w-0 bg-zinc-950 rounded-xl border border-zinc-800 p-2 sm:p-3 lg:p-5 font-mono shadow-2xl transition-all duration-300 overflow-hidden">
+            {/* Analytics pane — compact one-liner strip */}
+            <div className="flex-1 min-w-0 bg-zinc-950 rounded-xl border border-zinc-800 p-3 sm:p-5 font-mono flex flex-col justify-between shadow-2xl transition-all duration-300 overflow-hidden">
               
-              {/* One-liner status bar - horizontal layout on all screens */}
-              <div className="flex items-center justify-between gap-2 lg:gap-3">
-                <div className="flex items-center gap-1.5 lg:gap-2 min-w-0 flex-1">
-                  <span className="w-1.5 h-1.5 lg:w-2 lg:h-2 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
-                  <span className="text-[8px] lg:text-[9px] text-gray-300 font-bold tracking-wider flex-shrink-0 whitespace-nowrap">
+              {/* One-liner status bar */}
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2 min-w-0">
+                  <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
+                  <span className="text-[9px] text-gray-300 font-bold tracking-wider flex-shrink-0">
                     CONVERSION ANALYTICS ACTIVE
                   </span>
-                  <span className="text-[8px] lg:text-[9px] text-zinc-600 mx-0.5 lg:mx-1 flex-shrink-0">·</span>
-                  <span className="text-[8px] lg:text-[9px] text-[#A78BFA] truncate flex-1">{step.stats.readout}</span>
+                  <span className="text-[9px] text-zinc-600 mx-1 flex-shrink-0">·</span>
+                  <span className="text-[9px] text-[#A78BFA] truncate">{step.stats.readout}</span>
                 </div>
-                <ShieldCheck size={12} className="text-green-500 flex-shrink-0 hidden sm:block" />
+                <ShieldCheck size={13} className="text-green-500 flex-shrink-0" />
               </div>
 
-              {/* Anticipated outcome - inline on mobile, separate on desktop */}
-              <div className="flex items-center gap-2 lg:gap-3 mt-1.5 lg:mt-3">
-                <div className="bg-zinc-900/60 px-2 py-1.5 lg:p-3 rounded-lg border border-zinc-800/40 flex-1">
-                  <div className="text-[7px] lg:text-[9px] text-zinc-500 uppercase tracking-wider mb-0.5 lg:mb-1 whitespace-nowrap">
-                    OUTCOME
-                  </div>
-                  <div className="text-xs lg:text-sm text-amber-400 font-black uppercase transition-all duration-300 truncate">
-                    {step.stats.metric}
-                  </div>
+              {/* Checkpoint ghost text — hidden on mobile to save vertical space */}
+              <div className="hidden sm:flex flex-1 items-center justify-center py-3 px-2">
+                <p className="text-[10px] text-zinc-300 italic text-center leading-relaxed transition-all duration-300">
+                  {step.stats.checkpoint}
+                </p>
+              </div>
+
+              {/* Anticipated outcome */}
+              <div className="bg-zinc-900/60 p-2 sm:p-3 rounded-lg border border-zinc-800/40 mt-3 sm:mt-0">
+                <div className="text-[9px] text-zinc-500 uppercase tracking-wider mb-1">
+                  ANTICIPATED OUTCOME
+                </div>
+                <div className="text-sm text-amber-400 font-black uppercase transition-all duration-300">
+                  {step.stats.metric}
                 </div>
               </div>
             </div>
