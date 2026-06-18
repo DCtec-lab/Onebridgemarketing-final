@@ -1,6 +1,7 @@
 import { FC, useState, FormEvent, MouseEvent } from "react";
 import { Logo } from "./Logo";
 import { Instagram, Twitter, Youtube, Send, CheckCircle2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const Footer: FC = () => {
   const [newsEmail, setNewsEmail] = useState("");
@@ -105,12 +106,20 @@ export const Footer: FC = () => {
             </h4>
             <ul className="space-y-3">
               {[
-                { name: "About Us", href: "#expertise" },
-                { name: "Case Studies", href: "#results" },
-                { name: "Our Process", href: "#process" },
-                { name: "Contact", href: "#audit" },
+                { name: "About Us", href: "/about", isPage: true },
+                { name: "Case Studies", href: "/case-studies", isPage: true },
+                { name: "Our Process", href: "/process", isPage: true },
+                { name: "Contact", href: "#audit", isPage: false },
               ].map((link, idx) => (
                 <li key={idx}>
+                  {link.isPage ? (
+                    <Link
+                      to={link.href}
+                      className="font-sans text-sm text-gray-500 hover:text-orange-brand transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
                   <a
                     href={link.href}
                     onClick={(e) => handleLinkClick(e, link.href)}
@@ -118,6 +127,7 @@ export const Footer: FC = () => {
                   >
                     {link.name}
                   </a>
+                  )}
                 </li>
               ))}
             </ul>
