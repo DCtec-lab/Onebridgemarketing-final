@@ -1,8 +1,5 @@
 import { FC } from "react";
-import {
-  Search, BarChart2, Compass, Rocket, RefreshCcw,
-  Globe, Heart, Users, Activity, Phone, LayoutGrid, Eye, DollarSign, ArrowRight
-} from "lucide-react";
+import { Search, ChartBar as BarChart2, Compass, Rocket, RefreshCcw, Globe, Heart, Users, Activity, Phone, LayoutGrid, Eye, DollarSign, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const steps = [

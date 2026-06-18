@@ -1,6 +1,6 @@
 import { FC, useState, FormEvent, MouseEvent } from "react";
 import { Logo } from "./Logo";
-import { Instagram, Twitter, Youtube, Send, CheckCircle2 } from "lucide-react";
+import { Instagram, Twitter, Youtube, Send, CircleCheck as CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const Footer: FC = () => {

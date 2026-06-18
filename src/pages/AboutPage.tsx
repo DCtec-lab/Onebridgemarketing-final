@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Shield, CheckCircle, TrendingUp, Users, Target, Zap, Star, ArrowRight } from "lucide-react";
+import { Shield, CircleCheck as CheckCircle, TrendingUp, Users, Target, Zap, Star, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const pillars = [
