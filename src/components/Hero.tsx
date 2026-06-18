@@ -187,7 +187,13 @@ export const Hero: FC = () => {
   return (
     <section
       id="hero"
-      className="relative w-full bg-[#FAF8FC] pt-24 pb-0 sm:pt-28 md:pt-32 lg:pt-36 lg:pb-0 flex justify-center overflow-hidden transition-colors duration-300 z-10"
+      /* 
+        FIX: Removed 'items-center' to prevent the flex container from clipping the top 
+        of the content when it exceeds the viewport height. Added 'my-auto' to the 
+        inner container to maintain vertical centering on large screens while 
+        respecting the top padding on mobile.
+      */
+      className="relative w-full bg-[#FAF8FC] pt-24 pb-16 sm:pt-28 md:pt-32 lg:pt-36 lg:pb-32 flex justify-center overflow-hidden transition-colors duration-300 z-10"
     >
       {/* Immersive Warm Atmospheric Light Theme Grid Overlays */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
@@ -196,15 +202,18 @@ export const Hero: FC = () => {
         <div className="absolute top-[25%] right-[10%] w-[350px] h-[350px] rounded-full bg-indigo-100/30 filter blur-[120px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full relative z-20">
+      {/* FIX: Added 'my-auto' to guarantee the top padding is respected when content overflows */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full relative z-20 my-auto">
         
+        {/* FIX: Removed 'items-center' so the invisible spacer can stretch the left column */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 
           {/* Content Column */}
           <div className="lg:col-span-6 flex flex-col items-start text-left space-y-6 sm:space-y-8 relative z-30">
             
+            {/* Invisible spacer viewbox to guarantee clearance from the top navigation bar */}
             <div 
-              className="w-full h-12 sm:h-16 md:h-20 lg:h-24 flex-shrink-0 pointer-events-none select-none" 
+              className="w-full h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0 pointer-events-none select-none" 
               aria-hidden="true" 
             />
 
